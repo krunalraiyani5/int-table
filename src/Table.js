@@ -121,7 +121,7 @@ const AGGridTable = () => {
         <div className="p-4">Loading...</div>
       ) : (
         <div
-          className="ag-theme-quartz"
+          className="ag-theme-quartz m-4"
           style={{ height: "70vh", width: "100%" }}
         >
           <AgGridReact
