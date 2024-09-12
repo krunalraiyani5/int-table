@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar";
-import Header from "./Header";
-import Filter from "./Filter";
-import Table from "./Table";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import Filter from "./components/Filter";
+import Tabel from "./components/Table";
+import Tab2 from "./components/Tab2";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -19,7 +20,8 @@ function App() {
         <div className="p-6 space-y-6">
           <Filter />
 
-          <Table />
+          <Tab2 />
+          {/* <Tabel /> */}
         </div>
       </div>
     </div>
