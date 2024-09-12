@@ -96,7 +96,7 @@ const Table = () => {
       cellRendererFramework: (params) => (
         <input type="checkbox" checked={params.value} readOnly />
       ),
-      maxWidth: 100,
+      maxWidth: 160,
     },
     {
       headerName: "Rev auto refresh",
