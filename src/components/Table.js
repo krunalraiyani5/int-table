@@ -21,6 +21,11 @@ import { MdContentCopy, MdOutlineSettings } from "react-icons/md";
 import { TbChartArrows } from "react-icons/tb";
 import { GrHistory } from "react-icons/gr";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import CopyAllIcon from "@mui/icons-material/CopyAll";
+import ReadMoreIcon from "@mui/icons-material/ReadMore";
+import HistoryIcon from "@mui/icons-material/History";
+import SettingsIcon from "@mui/icons-material/Settings";
+import DeleteIcon from "@mui/icons-material/Delete";
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
   ColumnsToolPanelModule,
@@ -71,11 +76,20 @@ const Table = () => {
           headerName: "Start date",
           field: "startDate",
           filter: true,
+          cellRenderer: Link,
+          // cellRendererFramework: (params) => (
+          //   <div className="bg-red">{params.value}</div>
+          // ),
         },
         {
           headerName: "End date",
           field: "endDate",
           filter: true,
+          cellRenderer: (params) => (
+            <div className="text-xs leading-[18px] py-[8px] text-[#212B36]">
+              {params.value}
+            </div>
+          ),
         },
       ],
     },
@@ -132,8 +146,11 @@ const Table = () => {
 
   return (
     <div className="bg-white rounded-lg">
-      <h4 className="p-4 pb-0">
-        <span className="font-semibold">{rowData?.length}</span> results found
+      <h4 className="p-4 pb-0 text-[#637381] text-sm leading-6 font-normal">
+        <span className="text-[#212B36] text-sm leading-6 font-normal">
+          {rowData?.length}
+        </span>{" "}
+        results found
       </h4>
       {loading ? (
         <div className="p-4">Loading...</div>
@@ -164,12 +181,13 @@ export default Table;
 
 const Actions = () => {
   return (
-    <div className="flex items-center gap-3 h-full">
-      <MdContentCopy className="text-gray-600 cursor-pointer" />
-      <TbChartArrows className="text-gray-600 cursor-pointer" />
-      <GrHistory className="text-gray-600 cursor-pointer" />
-      <MdOutlineSettings className="text-gray-600 cursor-pointer" />
-      <RiDeleteBin6Line className="text-red-600 cursor-pointer" />
+    <div className="flex items-center gap-2 h-full">
+      <CopyAllIcon className="text-[#212B36]" />
+      <ReadMoreIcon className="text-[#212B36]" />
+      <HistoryIcon className="text-[#212B36]" />
+      <SettingsIcon className="text-[#212B36]" />
+
+      <DeleteIcon className="text-[#FF5630] size-small w-6 h-6" />
     </div>
   );
 };
@@ -177,10 +195,11 @@ const Actions = () => {
 const Link = (params) => {
   return (
     <div className="flex items-center">
+      ss
       <a
         href={params.value}
         target="_blank"
-        className="text-blue-600 underline"
+        className="underline text-xs leading-[18px] text-[#1877F2]"
       >
         {params.value}
       </a>
