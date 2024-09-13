@@ -68,49 +68,62 @@ const Tab2 = () => {
       headerName: "Plan level",
       children: [
         {
-          headerName: "Plan level",
-          field: "planLevel",
+          headerName: "Version Name",
+          field: "versionName",
+          cellRenderer: VersionName,
           filter: true,
         },
         {
-          headerName: "Plan created by",
+          headerName: "Version#",
+          field: "versionNo",
+          filter: true,
+        },
+        {
+          headerName: "Month",
+          field: "versionMonth",
+          filter: true,
+        },
+        {
+          headerName: "Week",
+          field: "versionWeek",
+          filter: true,
+        },
+        {
+          headerName: "As of date",
+          field: "versionAsOfDate",
+          filter: true,
+          cellRenderer: (params) => (
+            <div className="text-xs leading-[18px] py-[8px] text-[#212B36]">
+              {params.value}
+            </div>
+          ),
+        },
+        {
+          headerName: "Status",
+          field: "versionStatus",
+          filter: true,
+          cellRenderer: Status,
+        },
+        {
+          headerName: "Rev mode",
+          field: "versionRemark",
+          filter: true,
+        },
+
+        {
+          headerName: "Last edited",
+          field: "versionRemark",
+          filter: true,
+          cellRenderer: LastEdited,
+        },
+        {
+          headerName: "Last edited by",
           field: "planCreatedBy",
           filter: true,
         },
-        {
-          headerName: "Start date",
-          field: "startDate",
-          filter: true,
-          cellRenderer: (params) => (
-            <div className="text-xs leading-[18px] py-[8px] text-[#212B36]">
-              {params.value}
-            </div>
-          ),
-        },
-        {
-          headerName: "End date",
-          field: "endDate",
-          filter: true,
-          cellRenderer: (params) => (
-            <div className="text-xs leading-[18px] py-[8px] text-[#212B36]">
-              {params.value}
-            </div>
-          ),
-        },
       ],
     },
-    {
-      headerName: "Version level",
-      children: [
-        {
-          headerName: "Version name",
-          field: "versionName",
-          filter: true,
 
-          cellRenderer: Link,
-        },
-      ],
-    },
     {
       headerName: "Read only",
       field: "readOnly",
@@ -143,7 +156,7 @@ const Tab2 = () => {
 
   const onGridReady = useCallback((params) => {
     setLoading(true);
-    fetch("https://mocki.io/v1/66408211-bf72-4517-b2e4-174b65eda2a7")
+    fetch("https://mocki.io/v1/e712711d-af42-4bf5-835b-834128b87288")
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
@@ -194,6 +207,32 @@ const Actions = () => {
       <HistoryIcon className="text-[#212B36]" />
       <SettingsIcon className="text-[#212B36]" />
       <DeleteIcon className="text-[#FF5630] size-small w-6 h-6" />
+    </div>
+  );
+};
+
+const VersionName = (params) => {
+  return <div className="underline text-xs text-[#1877F2]">{params.value}</div>;
+};
+const LastEdited = (params) => {
+  return (
+    <div className="text-[#212B36]">
+      sep 24.2024 <span className="text-[#637381]">09:30 AM UTC</span>
+    </div>
+  );
+};
+const Status = (params) => {
+  return (
+    <div className="flex items-center">
+      <div
+        className={`text-center rounded-lg w-[80px] px-4 ${
+          params.value == "Draft"
+            ? "text-[#637381] bg-[#919EAB]"
+            : "text-[#118D57] bg-[#22C55E]"
+        }`}
+      >
+        {params.value}
+      </div>
     </div>
   );
 };

@@ -136,7 +136,7 @@ const Table = () => {
 
   const onGridReady = useCallback((params) => {
     setLoading(true);
-    fetch("https://mocki.io/v1/66408211-bf72-4517-b2e4-174b65eda2a7")
+    fetch("https://mocki.io/v1/e712711d-af42-4bf5-835b-834128b87288")
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
